@@ -1,0 +1,20 @@
+@import "./variables";
+
+.todos {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    text-align: center;
+    margin-bottom: rem(20);
+  }
+
+  form {
+    border: 1px solid magenta;
+    padding: rem(15);
+  }
+}

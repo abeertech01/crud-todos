@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #303030;
+  color: #eee;
+}
+
+a {
+  color: inherit;
+}
+
+.todos {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.todos h1 {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+.todos form {
+  border: 1px solid magenta;
+  padding: 0.9375rem;
+}
+
+/*# sourceMappingURL=style.css.map */

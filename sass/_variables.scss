@@ -1,0 +1,10 @@
+// colors
+$charcoal: #303030;
+$orange: rgb(255, 144, 41);
+$light-grey: #eee;
+$tomato: #ff4625;
+
+// function
+@function rem($px) {
+  @return $px/16 + rem;
+}
