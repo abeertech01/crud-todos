@@ -20,7 +20,9 @@ router.post("/", async (req, res, next) => {
 
   try {
     const result = await newTodo.save();
-    res.render("todos");
+    res.render("todos", {
+      title: "Task List",
+    });
   } catch (error) {
     res.status(500).json({
       errors: {

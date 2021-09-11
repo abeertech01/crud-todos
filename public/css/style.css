@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -7,6 +9,7 @@
 body {
   background-color: #303030;
   color: #eee;
+  font-family: "Roboto", sans-serif;
 }
 
 a {
@@ -21,13 +24,72 @@ a {
   justify-content: center;
   align-items: center;
 }
-.todos h1 {
+.todos__main-content {
+  min-width: 21.875rem;
+  max-width: 25rem;
+}
+.todos__header {
   text-align: center;
   margin-bottom: 1.25rem;
 }
-.todos form {
-  border: 1px solid magenta;
-  padding: 0.9375rem;
+.todos__add-btn {
+  text-align: center;
+  width: 100%;
+  padding: 0.3125rem;
+  margin-bottom: 0.9375rem;
+  color: #38b138;
+  font-size: 1.25rem;
+  font-weight: 500;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  border: 0.075rem solid #ff9029;
+  border-radius: 0.625rem;
+}
+.todos__form {
+  min-height: 1.9375rem;
+  margin-bottom: 0.9375rem;
+}
+.todos__form .input {
+  width: calc(100% - 5rem);
+  float: left;
+  border: none;
+  outline: none;
+  padding: 0.25rem 0.375rem;
+  font-size: 1.0625rem;
+  border-radius: 0.3125rem;
+}
+.todos__form [type=submit] {
+  width: 4.53125rem;
+  float: right;
+  padding: 0.125rem 0.375rem;
+  font-size: 1.125rem;
+  background-color: #38b138;
+  color: #eee;
+  border: 0.125rem solid #5c5c5c;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+}
+.todos__all-todos ul {
+  list-style-position: inside;
+  list-style-type: none;
+}
+.todos__all-todos ul li {
+  position: relative;
+  margin-bottom: 0.9375rem;
+}
+.todos__all-todos ul li button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: #df4e35;
+  color: #eee;
+  font-size: 1.125rem;
+  padding: 0.125rem 0.3125rem;
+  border: none;
+  outline: none;
+  border-radius: 0.3125rem;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

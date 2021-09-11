@@ -1,37 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <title>Task List</title>
-</head>
-<body>
-  <section class="todos">
-    <form class="form" action="/" method="POST">
-      <h1><%= title %></h1>
-      <input type="text" class="todo-input" name="todo" placeholder="write a todo...">
-      <input type="submit" value="Submit">
-    </form>
-  </section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Task List</title>
+  </head>
+  <body>
+    <section class="todos">
+      <div class="todos__main-content">
+        <h1 class="todos__header"><%= title %></h1>
+        
+        <button class="todos__add-btn">+ Add Todo</button>
+        
+        <!-- Form -->
+        <form class="todos__form" action="/" method="POST">
+          <input
+            type="text"
+            class="input"
+            name="todo"
+            placeholder="write a todo..."
+          />
+          <input type="submit" value="Submit" />
+        </form>
+  
+        <div class="todos__all-todos">
+          <p class="nothing">No Todos...</p>
+          <ul>
+            <li>
+              <input type="checkbox" id="todo" name="todo">
+              <label for="todo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quae non nulla.</label>
+              <button>remove</button>
+            </li>
+          </ul>
+        </div>
+        <!-- all the todos -->
+      </div>
+    </section>
 
-  <script>
-    // catch the elements
-    const form = document.querySelector("form");
-    const todo = document.querySelector(".todo-input").value;
+    <script>
+      // catch the elements
+      const addBtn = document.querySelector(".todos__add-btn");
+      const form = document.querySelector(".todos__form");
+      const eachTodo = document.querySelector(".todos__all-todos ul li")
+      const todoCheckbox = document.querySelector(".todos__all-todos ul li #todo");
+      const removeTodoBtn = document.querySelector(".todos__all-todos ul li button")
 
-    form.onsubmit = async function(){
-      const response = await fetch("/", {
-        method: "POST",
-        body: {
-          todo
+      // default changes
+      form.style.display = "none";
+      removeTodoBtn.style.display = "none";
+
+      // make changes
+      addBtn.addEventListener("click", ()=>{
+        form.style.display = "block";
+        addBtn.style.display = "none"
+      })
+
+      todoCheckbox.addEventListener("change", (e)=>{
+        if(e.target.checked){
+          eachTodo.style.textDecoration = 'line-through';
+        }else{
+          eachTodo.style.textDecoration = 'none';
         }
       })
 
-      const result = await response.json();
-      console.log(result);
-    }
-  </script>
-</body>
+      function removeBtnHover(){
+        eachTodo.addEventListener("mouseover", ()=>{
+          removeTodoBtn.style.display = "initial";
+        })
+
+        eachTodo.addEventListener("mouseout", ()=>{
+          removeTodoBtn.style.display = "none";
+        })
+      }
+      removeBtnHover();
+
+      removeTodoBtn.addEventListener("click", ()=>{
+
+      })
+    </script>
+  </body>
 </html>

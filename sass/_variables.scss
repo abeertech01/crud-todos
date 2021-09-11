@@ -1,8 +1,16 @@
+// font links
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
 // colors
 $charcoal: #303030;
 $orange: rgb(255, 144, 41);
 $light-grey: #eee;
-$tomato: #ff4625;
+$grey: rgb(92, 92, 92);
+$tomato: #df4e35;
+$green: rgb(56, 177, 56);
+
+// fonts
+$roboto: "Roboto", sans-serif;
 
 // function
 @function rem($px) {
