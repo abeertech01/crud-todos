@@ -37,27 +37,28 @@
     // border: 1px solid magenta;
     min-height: rem(31);
     margin-bottom: rem(15);
-    .input {
-      width: calc(100% - 5rem);
-      float: left;
-      border: none;
-      outline: none;
-      padding: rem(4) rem(6);
-      font-size: rem(17);
-      border-radius: rem(5);
-    }
+  }
 
-    [type="submit"] {
-      width: rem(72.5);
-      float: right;
-      padding: rem(2) rem(6);
-      font-size: rem(18);
-      background-color: $green;
-      color: $light-grey;
-      border: rem(2) solid $grey;
-      border-radius: rem(5);
-      cursor: pointer;
-    }
+  &__todo-input {
+    width: calc(100% - 5rem);
+    float: left;
+    border: none;
+    outline: none;
+    padding: rem(4) rem(6);
+    font-size: rem(17);
+    border-radius: rem(5);
+  }
+
+  &__submit-btn {
+    width: rem(72.5);
+    float: right;
+    padding: rem(2) rem(6);
+    font-size: rem(18);
+    background-color: $green;
+    color: $light-grey;
+    border: rem(2) solid $grey;
+    border-radius: rem(5);
+    cursor: pointer;
   }
 
   &__all-todos {

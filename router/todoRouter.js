@@ -13,12 +13,9 @@ router.get("/", async (req, res, next) => {
       todos,
     });
   } catch (err) {
-    res
-      .status(500)
-      .send({
-        message:
-          err.message || "Error Occurred while retriving user information",
-      });
+    res.status(500).send({
+      message: err.message || "Error Occurred while retriving user information",
+    });
   }
 });
 
@@ -30,9 +27,11 @@ router.post("/", async (req, res, next) => {
   });
 
   try {
-    const result = await newTodo.save();
+    await newTodo.save();
+    const todos = await Todo.find();
     res.render("todos", {
       title: "Task List",
+      todos,
     });
   } catch (error) {
     res.status(500).json({

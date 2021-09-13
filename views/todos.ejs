@@ -18,11 +18,11 @@
         <form class="todos__form" action="/" method="POST">
           <input
             type="text"
-            class="input"
+            class="todos__todo-input"
             name="todo"
             placeholder="write a todo..."
           />
-          <input type="submit" value="Submit" />
+          <button class="todos__submit-btn">Submit</button>
         </form>
   
         <div class="todos__all-todos">
@@ -46,6 +46,8 @@
       // catching the elements
       const addBtn = document.querySelector(".todos__add-btn");
       const form = document.querySelector(".todos__form");
+      const todoInput = document.querySelector(".todos__todo-input");
+      const submitBtn = document.querySelector("todos__submit-btn");
 
       // default changes
       form.style.display = "none";
@@ -54,6 +56,21 @@
       addBtn.addEventListener("click", ()=>{
         form.style.display = "block";
         addBtn.style.display = "initial";
+      })
+
+      submitBtn.addEventListener("click", async ()=>{
+        try {
+          const res = await fetch("/", {
+            method: "POST",
+            body: {
+              todo: todoInput.value,
+            }
+          })
+
+          location.reload();
+        } catch (err) {
+          console.log(err.message);
+        }
       })
 
     </script>
