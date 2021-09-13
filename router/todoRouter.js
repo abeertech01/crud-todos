@@ -5,10 +5,21 @@ const router = express.Router();
 // internal imports
 const Todo = require("../models/Todo");
 
-router.get("/", (req, res, next) => {
-  res.render("todos", {
-    title: "Task List",
-  });
+router.get("/", async (req, res, next) => {
+  try {
+    const todos = await Todo.find();
+    res.render("todos", {
+      title: "Task List",
+      todos,
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .send({
+        message:
+          err.message || "Error Occurred while retriving user information",
+      });
+  }
 });
 
 router.post("/", async (req, res, next) => {

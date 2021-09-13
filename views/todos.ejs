@@ -28,57 +28,34 @@
         <div class="todos__all-todos">
           <p class="nothing">No Todos...</p>
           <ul>
-            <li>
-              <input type="checkbox" id="todo" name="todo">
+            <li class="todos__each-todo">
+              <input type="checkbox" class="todos__each-checkbox" id="todo" name="todo">
               <label for="todo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quae non nulla.</label>
-              <button>remove</button>
+              <button class="todos__each-remove-btn">remove</button>
             </li>
           </ul>
+        </div>
+        <div>
+          <%= todos %>
         </div>
         <!-- all the todos -->
       </div>
     </section>
 
     <script>
-      // catch the elements
+      // catching the elements
       const addBtn = document.querySelector(".todos__add-btn");
       const form = document.querySelector(".todos__form");
-      const eachTodo = document.querySelector(".todos__all-todos ul li")
-      const todoCheckbox = document.querySelector(".todos__all-todos ul li #todo");
-      const removeTodoBtn = document.querySelector(".todos__all-todos ul li button")
 
       // default changes
       form.style.display = "none";
-      removeTodoBtn.style.display = "none";
 
       // make changes
       addBtn.addEventListener("click", ()=>{
         form.style.display = "block";
-        addBtn.style.display = "none"
+        addBtn.style.display = "initial";
       })
 
-      todoCheckbox.addEventListener("change", (e)=>{
-        if(e.target.checked){
-          eachTodo.style.textDecoration = 'line-through';
-        }else{
-          eachTodo.style.textDecoration = 'none';
-        }
-      })
-
-      function removeBtnHover(){
-        eachTodo.addEventListener("mouseover", ()=>{
-          removeTodoBtn.style.display = "initial";
-        })
-
-        eachTodo.addEventListener("mouseout", ()=>{
-          removeTodoBtn.style.display = "none";
-        })
-      }
-      removeBtnHover();
-
-      removeTodoBtn.addEventListener("click", ()=>{
-
-      })
     </script>
   </body>
 </html>
