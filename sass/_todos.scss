@@ -34,7 +34,6 @@
   }
 
   &__form {
-    // border: 1px solid magenta;
     min-height: rem(31);
     margin-bottom: rem(15);
   }
@@ -62,9 +61,15 @@
   }
 
   &__all-todos {
+    margin-top: rem(30);
     ul {
       list-style-position: inside;
       list-style-type: none;
+      width: calc(100% + 0.5rem);
+      padding-right: rem(8);
+      padding-top: rem(6);
+      max-height: rem(400);
+      overflow: auto;
 
       li {
         position: relative;
@@ -84,6 +89,23 @@
           cursor: pointer;
         }
       }
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+      width: rem(5);
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey;
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: $orange;
+      border-radius: 10px;
     }
   }
 }
