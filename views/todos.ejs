@@ -7,15 +7,21 @@
     <link rel="stylesheet" href="css/style.css" />
     <title>Task List</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <section class="todos">
       <div class="todos__main-content">
         <h1 class="todos__header"><%= title %></h1>
-        
+
         <button class="todos__add-btn">+ Add Todo</button>
-        
+
         <!-- Form -->
         <form class="todos__form" action="/" method="POST">
           <input
@@ -26,7 +32,7 @@
           />
           <button class="todos__submit-btn">Submit</button>
         </form>
-  
+
         <!-- all the todos -->
         <div class="todos__all-todos">
           <% if(todos.length === 0){ %>
@@ -34,12 +40,21 @@
           <% } %>
           <ul class="todos__todo-list">
             <% todos.forEach((todo)=>{ %>
-            <li class="todos__each-todo">
-              <input type="checkbox" class="todos__each-checkbox" id="todo" name="todo">
+            <li class="todos__each-todo" id="<%= todo._id %>">
+              <input
+                type="checkbox"
+                class="todos__each-checkbox"
+                id="todo"
+                name="todo"
+              />
               <label for="todo"><%= todo.todo %></label>
               <div class="todos__edit-delete">
-                <button class="todos__remove-btn"><i class="fas fa-edit"></i></button>
-                <button class="todos__remove-btn"><i class="fas fa-trash-alt"></i></button>
+                <button class="todos__edit-btn">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="todos__remove-btn" onclick="deleteTodo('<%= todo._id %>')">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
               </div>
             </li>
             <% }) %>
@@ -49,36 +64,36 @@
     </section>
 
     <script>
-      // catching the elements
+      //============ catching the elements ==============
       const addBtn = document.querySelector(".todos__add-btn");
       const form = document.querySelector(".todos__form");
       const todoInput = document.querySelector(".todos__todo-input");
       const submitBtn = document.querySelector("todos__submit-btn");
+      // const removeBtn = document.querySelectorAll("todos__remove-btn");
 
-      // default changes
+      //=================== default changes ====================
       form.style.display = "none";
 
-      // make changes
-      addBtn.addEventListener("click", ()=>{
+      //===================== make changes ========================
+      addBtn.addEventListener("click", () => {
         form.style.display = "block";
         addBtn.style.display = "none";
-      })
+      });
 
-      submitBtn.addEventListener("click", async ()=>{
+      submitBtn.addEventListener("click", async () => {
         try {
           const res = await fetch("/", {
             method: "POST",
             body: {
               todo: todoInput.value,
-            }
-          })
-
+            },
+          });
+          
           location.reload();
         } catch (err) {
           console.log(err.message);
         }
-      })
-
+      });
     </script>
   </body>
 </html>

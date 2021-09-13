@@ -86,7 +86,9 @@ router.delete("/:id", async (req, res, next) => {
   const id = req.params.id;
 
   try {
-    const response = await Todo.findByIdAndDelete(id);
+    const response = await Todo.findByIdAndDelete({
+      _id: id,
+    });
     if (!response) {
       res
         .status(404)
