@@ -21,10 +21,10 @@
   &__add-btn {
     text-align: center;
     width: 100%;
-    padding: rem(5);
+    padding: rem(8);
     margin-bottom: rem(15);
     color: $green;
-    font-size: rem(20);
+    font-size: rem(22);
     font-weight: 500;
     background: none;
     cursor: pointer;
@@ -43,15 +43,15 @@
     float: left;
     border: none;
     outline: none;
-    padding: rem(4) rem(6);
-    font-size: rem(17);
+    padding: rem(5) rem(8);
+    font-size: rem(20);
     border-radius: rem(5);
   }
 
   &__submit-btn {
     width: rem(72.5);
     float: right;
-    padding: rem(2) rem(6);
+    padding: rem(5);
     font-size: rem(18);
     background-color: $green;
     color: $light-grey;
@@ -62,50 +62,60 @@
 
   &__all-todos {
     margin-top: rem(30);
-    ul {
-      list-style-position: inside;
-      list-style-type: none;
-      width: calc(100% + 0.5rem);
-      padding-right: rem(8);
-      padding-top: rem(6);
-      max-height: rem(400);
-      overflow: auto;
+  }
 
-      li {
-        position: relative;
-        margin-bottom: rem(15);
+  &__todo-list {
+    list-style-position: inside;
+    list-style-type: none;
+    width: calc(100% + 0.5rem);
+    padding-right: rem(8);
+    padding-top: rem(6);
+    max-height: rem(400);
+    overflow: auto;
+  }
 
-        button {
-          position: absolute;
-          right: 0;
-          bottom: 0;
-          background-color: $tomato;
-          color: $light-grey;
-          font-size: rem(18);
-          padding: rem(2) rem(5);
-          border: none;
-          outline: none;
-          border-radius: rem(5);
-          cursor: pointer;
-        }
-      }
+  &__each-todo {
+    position: relative;
+    font-size: rem(20);
+    margin-bottom: rem(22);
+  }
+
+  &__edit-delete {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: rem(2) rem(6);
+    background-color: $tomato;
+    border-radius: rem(5);
+  }
+
+  &__edit-delete > button {
+    padding: 0 rem(4);
+    border: none;
+    outline: none;
+    font-size: rem(16);
+    background: none;
+    cursor: pointer;
+
+    i {
+      color: $light-grey;
     }
+  }
 
-    /* width */
-    ::-webkit-scrollbar {
-      width: rem(5);
-    }
+  /* width */
+  ::-webkit-scrollbar {
+    width: rem(5);
+  }
 
-    /* Track */
-    ::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 5px grey;
-      border-radius: 10px;
-    }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
 
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-      background: $orange;
-      border-radius: 10px;
-    }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $orange;
+    border-radius: 10px;
   }
 }
