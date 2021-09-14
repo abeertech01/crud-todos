@@ -75,7 +75,7 @@
                   class="todos__edit-input"
                   id="input_<%= todo._id %>"
                 />
-                <button class="todos__edit-save" id="save-btn_<%= todo._id %>">
+                <button class="todos__edit-save" id="save-btn_<%= todo._id %>" onclick="saveEditing('<%= todo._id %>')">
                   Save
                 </button>
               </div>
@@ -144,7 +144,6 @@
         let edit_delete = document.getElementById("edit-delete_" + id);
         let editing = document.getElementById("editing_" + id);
         let edit_input = document.getElementById("input_" + id);
-        let edit_save = document.getElementById("save-btn_" + id);
 
         // make checkbox, label and edit-delete div display to none
         checkbox.style.display = "none";
@@ -157,6 +156,27 @@
 
         // add value
         edit_input.value = todo;
+      }
+
+      
+      async function saveEditing(id){
+        let editedValue = await document.getElementById("input_" + id).value;
+        try {
+          const response = await fetch(`/${id}`,{
+            method: 'PUT',
+            body: {
+              todo: editedValue,
+            }
+        });
+
+        if(response.ok){
+          console.log(response);
+        }
+
+        // location.reload();
+        } catch (err) {
+          console.log(err);
+        }
       }
     </script>
   </body>
