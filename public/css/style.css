@@ -88,7 +88,7 @@ a {
 .todos__each-todo {
   position: relative;
   font-size: 1.25rem;
-  margin-bottom: 1.375rem;
+  margin-bottom: 1.875rem;
 }
 .todos__edit-delete {
   position: absolute;
@@ -109,22 +109,33 @@ a {
 .todos__edit-delete > button i {
   color: #eee;
 }
+.todos__todo-editing {
+  grid-template-columns: auto 4.53125rem;
+  gap: 0.3125rem;
+}
 .todos__edit-input {
-  padding: 0.3125rem 0.625rem;
-  font-size: 1.25rem;
+  display: block;
   border: none;
   outline: none;
+  padding: 0.3125rem 0.5rem;
+  font-size: 1.25rem;
   border-radius: 0.3125rem;
 }
-.todos__edit-save-btn {
-  padding: 0.3125rem 0.625rem;
-  border: none;
-  outline: none;
-  font-size: 1.25rem;
-  border-radius: 0.3125rem;
-  background-color: #df4e35;
+.todos__edit-save {
+  display: block;
+  padding: 0.3125rem;
+  font-size: 1.125rem;
+  background-color: #38b138;
   color: #eee;
-  margin-left: 0.3125rem;
+  border: 0.125rem solid #5c5c5c;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+}
+.todos .display-none {
+  display: none;
+}
+.todos .display-grid {
+  display: grid;
 }
 .todos ::-webkit-scrollbar {
   width: 0.3125rem;

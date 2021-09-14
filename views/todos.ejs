@@ -44,16 +44,39 @@
               <input
                 type="checkbox"
                 class="todos__each-checkbox"
-                id="todo"
+                id="checkbox_<%= todo._id %>"
                 name="todo"
               />
-              <label for="todo"><%= todo.todo %></label>
-              <div class="todos__edit-delete">
-                <button class="todos__edit-btn" onclick="editTodo('<%= todo._id %>', '<%= todo.todo %>')">
+              <label
+                class="todos__todo-label"
+                for="todo"
+                id="label_<%= todo._id %>"
+                ><%= todo.todo %></label
+              >
+              <div class="todos__edit-delete" id="edit-delete_<%= todo._id %>">
+                <button
+                  class="todos__edit-btn"
+                  onclick="editTodo('<%= todo._id %>', '<%= todo.todo %>')"
+                >
                   <i class="fas fa-edit"></i>
                 </button>
-                <button class="todos__remove-btn" onclick="removeTodo('<%= todo._id %>')">
+                <button
+                  class="todos__remove-btn"
+                  onclick="removeTodo('<%= todo._id %>')"
+                >
                   <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+
+              <!-- editing todo -->
+              <div class="todos__todo-editing" id="editing_<%= todo._id %>">
+                <input
+                  type="text"
+                  class="todos__edit-input"
+                  id="input_<%= todo._id %>"
+                />
+                <button class="todos__edit-save" id="save-btn_<%= todo._id %>">
+                  Save
                 </button>
               </div>
             </li>
@@ -61,18 +84,6 @@
           </ul>
         </div>
       </div>
-
-      <!-- edit modal -->
-      <div class="todos__edit-modal">
-        <input
-            type="text"
-            class="todos__edit-input"
-            name="todo"
-            placeholder="write a todo..."
-          />
-        <button class="todos__edit-save-btn" onclick="saveEditedTodo">Save</button>
-      </div>
-
     </section>
 
     <script>
@@ -80,13 +91,16 @@
       const addBtn = document.querySelector(".todos__add-btn");
       const form = document.querySelector(".todos__form");
       const todoInput = document.querySelector(".todos__todo-input");
-      const submitBtn = document.querySelector("todos__submit-btn");
-      const editModal = document.querySelector(".todos__edit-modal");
-      const editInput = document.querySelector(".todos__edit-input");
+      const submitBtn = document.querySelector(".todos__submit-btn");
+      const eachTodo = document.querySelectorAll(".todos__each-todo");
+
+      const todoEditing = document.querySelectorAll(".todos__todo-editing");
 
       //=================== default changes ====================
       form.style.display = "none";
-      editModal.style.display = "none";
+      todoEditing.forEach((todo) => {
+        todo.classList.add("display-none");
+      });
 
       //===================== make changes ========================
       addBtn.addEventListener("click", () => {
@@ -102,7 +116,7 @@
               todo: todoInput.value,
             },
           });
-          
+
           location.reload();
         } catch (err) {
           console.log(err.message);
@@ -110,23 +124,40 @@
       });
 
       // ========= remove todo ===========
-      async function removeTodo(id){
+      async function removeTodo(id) {
         try {
           const res = await fetch(`/${id}`, {
-            method: "DELETE"
-          })
+            method: "DELETE",
+          });
 
           location.reload();
         } catch (err) {
           console.log(err.message);
-        }        
+        }
       }
 
       // =========== edit =============
-      function editTodo(){
-        document
+      function editTodo(id, todo) {
+        let li = document.getElementById(id);
+        let checkbox = document.getElementById("checkbox_" + id);
+        let label = document.getElementById("label_" + id);
+        let edit_delete = document.getElementById("edit-delete_" + id);
+        let editing = document.getElementById("editing_" + id);
+        let edit_input = document.getElementById("input_" + id);
+        let edit_save = document.getElementById("save-btn_" + id);
+
+        // make checkbox, label and edit-delete div display to none
+        checkbox.style.display = "none";
+        label.style.display = "none";
+        edit_delete.style.display = "none";
+
+        // make editing div display to grid
+        editing.classList.remove("display-none");
+        editing.classList.add("display-grid");
+
+        // add value
+        edit_input.value = todo;
       }
-      
     </script>
   </body>
 </html>
