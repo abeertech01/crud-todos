@@ -49,10 +49,10 @@
               />
               <label for="todo"><%= todo.todo %></label>
               <div class="todos__edit-delete">
-                <button class="todos__edit-btn">
+                <button class="todos__edit-btn" onclick="editTodo('<%= todo._id %>', '<%= todo.todo %>')">
                   <i class="fas fa-edit"></i>
                 </button>
-                <button class="todos__remove-btn" onclick="deleteTodo('<%= todo._id %>')">
+                <button class="todos__remove-btn" onclick="removeTodo('<%= todo._id %>')">
                   <i class="fas fa-trash-alt"></i>
                 </button>
               </div>
@@ -61,6 +61,18 @@
           </ul>
         </div>
       </div>
+
+      <!-- edit modal -->
+      <div class="todos__edit-modal">
+        <input
+            type="text"
+            class="todos__edit-input"
+            name="todo"
+            placeholder="write a todo..."
+          />
+        <button class="todos__edit-save-btn" onclick="saveEditedTodo">Save</button>
+      </div>
+
     </section>
 
     <script>
@@ -69,10 +81,12 @@
       const form = document.querySelector(".todos__form");
       const todoInput = document.querySelector(".todos__todo-input");
       const submitBtn = document.querySelector("todos__submit-btn");
-      // const removeBtn = document.querySelectorAll("todos__remove-btn");
+      const editModal = document.querySelector(".todos__edit-modal");
+      const editInput = document.querySelector(".todos__edit-input");
 
       //=================== default changes ====================
       form.style.display = "none";
+      editModal.style.display = "none";
 
       //===================== make changes ========================
       addBtn.addEventListener("click", () => {
@@ -94,6 +108,25 @@
           console.log(err.message);
         }
       });
+
+      // ========= remove todo ===========
+      async function removeTodo(id){
+        try {
+          const res = await fetch(`/${id}`, {
+            method: "DELETE"
+          })
+
+          location.reload();
+        } catch (err) {
+          console.log(err.message);
+        }        
+      }
+
+      // =========== edit =============
+      function editTodo(){
+        document
+      }
+      
     </script>
   </body>
 </html>

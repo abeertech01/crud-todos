@@ -102,6 +102,26 @@
     }
   }
 
+  // ========= editing todo ==========
+  &__edit-input {
+    padding: rem(5) rem(10);
+    font-size: rem(20);
+    border: none;
+    outline: none;
+    border-radius: rem(5);
+  }
+
+  &__edit-save-btn {
+    padding: rem(5) rem(10);
+    border: none;
+    outline: none;
+    font-size: rem(20);
+    border-radius: rem(5);
+    background-color: $tomato;
+    color: $light-grey;
+    margin-left: rem(5);
+  }
+
   /* width */
   ::-webkit-scrollbar {
     width: rem(5);
