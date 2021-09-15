@@ -164,16 +164,19 @@
         try {
           const response = await fetch(`/${id}`,{
             method: 'PUT',
-            body: {
+            headers: {
+              'Content-Type': 'application/json',
+            },            
+            body: JSON.stringify({
               todo: editedValue,
-            }
+            })
         });
 
         if(response.ok){
           console.log(response);
         }
 
-        // location.reload();
+        location.reload();
         } catch (err) {
           console.log(err);
         }

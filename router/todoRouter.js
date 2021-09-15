@@ -57,20 +57,15 @@ router.put("/:id", async (req, res, next) => {
 
   const id = req.params.id;
   try {
-    const response = await Todo.findByIdAndUpdate(
-      id,
-      {
-        ...req.body,
-      },
-      {
-        useFindAndModify: false,
-      }
-    );
+    const response = await Todo.findByIdAndUpdate(id, {
+      ...req.body,
+    });
     if (!response) {
       res.status(404).send({
         message: `Cannot Update user with ${id}. Maybe todo not found!`,
       });
     } else {
+      // res.set("Content-Type", "text/plain");
       const todos = await Todo.find();
       res.render("todos", {
         title: "Task List",
